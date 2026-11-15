@@ -1,4 +1,4 @@
-# ZNAssist — plano de implementação
+# W Assistant — plano de implementação
 
 ## Escopo
 
@@ -36,7 +36,7 @@ Base grafite quase preta (`#0b0f12`), superfícies em camadas (`#11171b`, `#151d
 
 ### Elementos de assinatura
 
-1. Marca `ZN/` em bloco no topo do rail.
+1. Marca `W` em bloco no topo do rail, acompanhada do wordmark `ASSISTANT`.
 2. Linha de status “agent ready / web connected” e eventos com marcador vertical.
 3. Inspector “Contexto ativo” mostrando os toggles z, z2 e z3 e a contagem de fontes.
 
@@ -50,7 +50,7 @@ Direta, técnica, calma e explícita sobre limites. Exemplos: “Busquei na web 
 
 ### Wordmark
 
-`ZN/ASSIST` em monoespaçada pesada, com a barra como cursor de execução. A assinatura visual é o lima `#b8f36b`, reservado para o estado operacional e ações primárias.
+`W ASSISTANT` em monoespaçada pesada, com o `W` em bloco como assinatura. A interface usa um dark mode quase preto com acento lima `#c8ff82`, reservado para o estado operacional e ações primárias.
 
 ## Restrições materiais
 

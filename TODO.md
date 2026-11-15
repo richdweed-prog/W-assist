@@ -1,4 +1,4 @@
-# ZNAssist — resultados
+# W Assistant — resultados
 
 ## 1. Chat aberto e agente técnico com contrato de backend
 

@@ -202,7 +202,7 @@ export default function Home() {
     <div className="app-shell">
       <header className="topbar">
         <div className="mobile-menu"><Menu size={18} /></div>
-        <div className="brand-lockup"><span className="brand-mark">ZN/</span><span className="brand-name">ASSIST</span><span className="brand-path">~/znproxy</span></div>
+        <div className="brand-lockup"><span className="brand-mark">W</span><span className="brand-name">ASSISTANT</span><span className="brand-path">~/open-chat</span></div>
         <div className="topbar-spacer" />
         <div className="connection-status"><span className="status-light" /> web {toggles.z3 ? "connected" : "off"}</div>
         <div className="topbar-actions">
@@ -217,7 +217,7 @@ export default function Home() {
         <aside className="command-rail">
           <button className="new-session" onClick={newSession}><Plus size={16} /><span>nova sessão</span><kbd>⌘ N</kbd></button>
           <div className="rail-section-label">WORKSPACE</div>
-          <button className="rail-item active"><TerminalSquare size={15} /><span>agent</span><span className="rail-count">1</span></button>
+          <button className="rail-item active"><TerminalSquare size={15} /><span>assistant</span><span className="rail-count">1</span></button>
           <button className="rail-item"><Code2 size={15} /><span>snippets</span></button>
           <button className="rail-item"><Braces size={15} /><span>context</span></button>
           <div className="rail-section-label history-label">RECENTES</div>
@@ -238,7 +238,7 @@ export default function Home() {
               <article className={`message-block ${message.role}`} key={message.id}>
                 <div className="message-gutter">{message.role === "user" ? <span className="user-caret">›</span> : <span className="assistant-symbol">✦</span>}</div>
                 <div className="message-body">
-                  <div className="message-author">{message.role === "user" ? "você" : "znassist"}<span className="message-time">{message.role === "assistant" ? "agent" : "input"}</span></div>
+                  <div className="message-author">{message.role === "user" ? "você" : "w assistant"}<span className="message-time">{message.role === "assistant" ? "assistant" : "input"}</span></div>
                   {message.role === "assistant" ? <Streamdown>{message.content}</Streamdown> : <p>{message.content}</p>}
                 </div>
               </article>
