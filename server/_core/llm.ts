@@ -214,9 +214,10 @@ const normalizeToolChoice = (
 
 const platformApiBase = () => {
   if (!ENV.forgeApiUrl.trim()) throw new Error("MANUS_API_URL is not configured");
-  return ENV.forgeApiUrl.replace(/\/$/, "");
+  return ENV.forgeApiUrl.replace(/\/+$/, "").replace(/\/v1$/i, "");
 };
-const resolveApiUrl = () => `${platformApiBase()}/v1/chat/completions`;
+const resolveV1ApiBase = () => `${platformApiBase()}/v1`;
+const resolveApiUrl = () => `${resolveV1ApiBase()}/chat/completions`;
 
 const assertApiKey = () => {
   if (!ENV.forgeApiKey) {
@@ -436,7 +437,7 @@ export type ModelsResponse = {
 export async function listLLMModels(): Promise<ModelsResponse> {
   assertApiKey();
 
-  const url = `${platformApiBase()}/v1/models`;
+  const url = `${resolveV1ApiBase()}/models`;
 
   const response = await fetchWithBackoff(url, {
     headers: { authorization: `Bearer ${ENV.forgeApiKey}` },
