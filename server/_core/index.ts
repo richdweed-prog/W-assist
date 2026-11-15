@@ -11,7 +11,10 @@ import { runAgent, type AgentHistoryItem, type AgentOptions } from "../agent";
 
 const rateBuckets = new Map<string, { count: number; resetAt: number }>();
 const MAX_REQUESTS_PER_MINUTE = 20;
-const AGENT_TIMEOUT_MS = 45_000;
+// Modelos locais maiores, como qwen3:14b, podem levar mais de 45 s para carregar
+// e gerar a primeira resposta através do túnel. O limite continua finito para
+// evitar requisições presas, mas dá tempo suficiente para uma máquina comum.
+const AGENT_TIMEOUT_MS = 180_000;
 
 function readHistory(value: unknown): AgentHistoryItem[] {
   if (!Array.isArray(value)) return [];
