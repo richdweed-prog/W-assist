@@ -7,6 +7,9 @@ export const ENV = {
   // Preserve the legacy hint when supplied; otherwise roles remain application data.
   get ownerOpenId() { return process.env.OWNER_OPEN_ID ?? ""; },
   get isProduction() { return process.env.NODE_ENV === "production"; },
-  get forgeApiUrl() { return process.env.MANUS_API_URL ?? ""; },
-  get forgeApiKey() { return process.env.MANUS_API_KEY ?? ""; },
+  // Manus supplies MANUS_API_* in its managed runtime. Render and other
+  // hosts can use any OpenAI-compatible endpoint through OPENAI_API_*.
+  get forgeApiUrl() { return process.env.MANUS_API_URL ?? process.env.OPENAI_API_BASE ?? "https://api.openai.com"; },
+  get forgeApiKey() { return process.env.MANUS_API_KEY ?? process.env.OPENAI_API_KEY ?? ""; },
+  get forgeModel() { return process.env.LLM_MODEL ?? process.env.OPENAI_MODEL ?? ""; },
 };

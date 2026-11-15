@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: znassist
+    runtime: node
+    region: oregon
+    plan: free
+    branch: main
+    buildCommand: corepack enable && corepack prepare pnpm@10.18.0 --activate && pnpm install --frozen-lockfile && pnpm build
+    startCommand: pnpm start
+    healthCheckPath: /api/health
+    autoDeploy: commit
+    envVars:
+      - key: NODE_VERSION
+        value: "22"
+      - key: OPENAI_API_BASE
+        value: https://api.openai.com
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: LLM_MODEL
+        sync: false

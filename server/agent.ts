@@ -1,6 +1,7 @@
 import { lookup } from "node:dns/promises";
 import { isIP } from "node:net";
 import { invokeLLM, type Message } from "./_core/llm";
+import { ENV } from "./_core/env";
 
 export type AgentRole = "user" | "assistant";
 
@@ -319,6 +320,7 @@ export async function runAgent(options: AgentOptions): Promise<AgentResult> {
 
   try {
     const completion = await invokeLLM({
+      model: ENV.forgeModel || undefined,
       messages: [
         { role: "system", content: SYSTEM_PROMPT },
         ...history,
