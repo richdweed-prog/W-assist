@@ -36,7 +36,7 @@ const initialMessages: ChatMessage[] = [
   {
     id: "welcome",
     role: "assistant",
-    content: "Estou pronto. Posso analisar tráfego capturado, depurar APIs, escrever scripts e pesquisar na web quando o toggle `z3` estiver ativo.\n\n> Dica: pergunte algo como **“por que esta API está retornando 401?”** e cole apenas o trecho de tráfego necessário.",
+    content: "Estou pronto para conversar sobre qualquer assunto. Posso explicar, resumir, traduzir, ajudar a estudar, planejar, escrever e pesquisar na web. Também analiso tráfego, código, JavaScript, JSON, logs, stack traces, configurações e documentação técnica quando você enviar esse contexto.\n\n> Pergunte do seu jeito — desde uma dúvida simples até um problema técnico detalhado.",
   },
 ];
 
@@ -219,7 +219,7 @@ export default function Home() {
           <div className="rail-section-label">WORKSPACE</div>
           <button className="rail-item active"><TerminalSquare size={15} /><span>agent</span><span className="rail-count">1</span></button>
           <button className="rail-item"><Code2 size={15} /><span>snippets</span></button>
-          <button className="rail-item"><Braces size={15} /><span>traffic</span></button>
+          <button className="rail-item"><Braces size={15} /><span>context</span></button>
           <div className="rail-section-label history-label">RECENTES</div>
           <button className="session-item active"><span className="session-dot" /><span className="truncate">debug 401 api</span></button>
           <button className="session-item"><span className="session-dot muted" /><span className="truncate">oauth redirect</span></button>
@@ -229,11 +229,11 @@ export default function Home() {
 
         <main className="chat-column">
           <div className="chat-header">
-            <div><div className="eyebrow">AGENT SESSION</div><h1>Depurar com contexto</h1></div>
+            <div><div className="eyebrow">OPEN CHAT</div><h1>Pergunte qualquer coisa</h1></div>
             <div className="chat-meta"><span className="model-pill"><Zap size={12} /> auto</span><span className="slash">/</span><span>sem persistência</span></div>
           </div>
           <div className="chat-scroll">
-            <div className="session-intro"><span className="intro-line" /> <span>sessão iniciada agora · modelo server-side</span></div>
+            <div className="session-intro"><span className="intro-line" /> <span>sessão aberta agora · modelo server-side</span></div>
             {messages.map(message => (
               <article className={`message-block ${message.role}`} key={message.id}>
                 <div className="message-gutter">{message.role === "user" ? <span className="user-caret">›</span> : <span className="assistant-symbol">✦</span>}</div>
@@ -248,9 +248,9 @@ export default function Home() {
 
           <div className="composer-wrap">
             <div className="composer-context"><span className="context-dot" /> contexto: <strong>{contextLabel}</strong><span className="context-sep">·</span> web: <strong>{toggles.z3 ? "on" : "off"}</strong><button className="context-expand" onClick={() => setShowTraffic(v => !v)}>{showTraffic ? "fechar" : "editar"} <ChevronDown size={13} className={showTraffic ? "rotate" : ""} /></button></div>
-            {showTraffic && <textarea className="traffic-editor" value={traffic} onChange={event => setTraffic(event.target.value)} spellCheck={false} aria-label="Contexto de tráfego" />}
+            {showTraffic && <textarea className="traffic-editor" value={traffic} onChange={event => setTraffic(event.target.value)} spellCheck={false} aria-label="Contexto técnico" />}
             <div className="composer">
-              <textarea value={input} onChange={event => setInput(event.target.value)} onKeyDown={event => { if (event.key === "Enter" && !event.shiftKey) { event.preventDefault(); void sendMessage(); } }} placeholder="Pergunte ao agente… (Enter envia, Shift+Enter quebra linha)" rows={2} disabled={busy} />
+              <textarea value={input} onChange={event => setInput(event.target.value)} onKeyDown={event => { if (event.key === "Enter" && !event.shiftKey) { event.preventDefault(); void sendMessage(); } }} placeholder="Pergunte ou cole código, JSON, logs e tráfego… (Enter envia)" rows={2} disabled={busy} />
               <button className="send-button" onClick={() => void sendMessage()} disabled={!input.trim() || busy} title="Enviar mensagem"><ArrowUp size={18} /></button>
             </div>
             <div className="composer-footer"><span><Search size={12} /> {toggles.z3 ? "busca real + fontes" : "modo local"}</span><span>não cole segredos</span></div>

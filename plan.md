@@ -2,7 +2,7 @@
 
 ## Escopo
 
-Construir um protótipo funcional do assistente técnico do ZNProxy, inspirado no fluxo de agentes de terminal do OpenCode: uma interface densa de desenvolvedor, histórico de chat, painel de eventos do agente, toggles de segurança/contexto e um endpoint de backend que pesquisa a web real, coleta fontes e chama o LLM apenas no servidor.
+Construir um protótipo funcional de assistente geral conversacional para o ZNProxy, com experiência de chat aberto inspirada em assistentes modernos e uma interface densa de desenvolvedor no estilo OpenCode. O produto terá histórico de chat, painel de eventos do agente, toggles de segurança/contexto e um endpoint de backend que pesquisa a web real, coleta fontes e chama o LLM apenas no servidor. O contexto analisável inclui tráfego HTTP/HTTPS, código, JavaScript, JSON, logs, stack traces, configurações, documentação e erros de API.
 
 A primeira versão é web responsiva para validar o fluxo e a integração. O backend será modular para que o mesmo contrato `/api/agent` possa ser consumido depois pelo APK Android ou diretamente pelo ZNProxy.
 

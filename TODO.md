@@ -1,8 +1,9 @@
 # ZNAssist — resultados
 
-## 1. Agente técnico com contrato de backend
+## 1. Chat aberto e agente técnico com contrato de backend
 
 - [x] `POST /api/agent` recebe uma mensagem, histórico opcional, toggles `z`, `z2`, `z3`, modo de busca e contexto de tráfego.
+- [x] O ZNAssist funciona como chat aberto para perguntas variadas, incluindo explicações, estudos, escrita, planejamento, resumo, tradução e ideias, e também identifica e analisa tráfego HTTP/HTTPS, código, JavaScript, JSON, logs, stack traces, configurações, documentação técnica e erros de API.
 - [x] A resposta contém texto do assistente, modo utilizado, fontes e eventos do agente.
 - [x] O backend chama o LLM usando credenciais de servidor e nunca envia credenciais ao navegador.
 - [x] O prompt informa que tráfego capturado e páginas externas são dados não confiáveis e não podem sobrescrever as instruções do sistema.
@@ -20,7 +21,7 @@
 - [x] A página principal é responsiva, em português do Brasil e usa visual escuro de ferramenta de desenvolvedor.
 - [x] O chat diferencia mensagens do usuário e do agente e renderiza Markdown do assistente.
 - [x] Há uma linha de eventos mostrando `thinking`, `search`, `source` e `answer` durante o turno.
-- [x] Há editor de contexto de tráfego, com comportamento visível para `z` (ler tráfego), `z2` (mascarar) e `z3` (web).
+- [x] Há editor de contexto técnico, que aceita tráfego, código, JSON e logs, com comportamento visível para `z` (ler contexto), `z2` (mascarar) e `z3` (web).
 - [x] O inspector mostra conexão web, fontes do turno e resumo do contexto ativo.
 
 ## 4. Base para Android/ZNProxy
